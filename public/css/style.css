@@ -1,0 +1,25 @@
+* {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* body {
+    background-color: red;
+} */
+
+textarea:active,
+textarea:focus,
+input:active,
+input:focus,
+button:active,
+button:focus {
+    outline: 0ch !important;
+    -webkit-appearance: none !important;
+}
+
+label {
+    margin-bottom: 0 !important;
+}
