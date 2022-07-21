@@ -1,6 +1,8 @@
 <?php
 // Load Config file
 require_once 'config/config.php';
+// Load url redirect
+require_once 'helpers/url_redirect.php';
 
 // Load Libraries
 // require_once 'libraries/controller.php';
