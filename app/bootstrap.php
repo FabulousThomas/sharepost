@@ -3,6 +3,7 @@
 require_once 'config/config.php';
 // Load url redirect
 require_once 'helpers/url_redirect.php';
+require_once 'helpers/msg_session.php';
 
 // Load Libraries
 // require_once 'libraries/controller.php';
