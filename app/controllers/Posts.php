@@ -28,21 +28,28 @@ class Posts extends Controller
             'body_err' => '',
          ];
          // Validate title
-         if(empty($data['title'])) {
+         if (empty($data['title'])) {
             $data['title_err'] = 'Please, enter title';
          }
          // Validate body
-         if(empty($data['body'])) {
+         if (empty($data['body'])) {
             $data['body_err'] = 'Please, enter body';
          }
-         if(empty($data['title_err']) && empty($data['body_err'])) {
+
+         // Make sure error is empty
+         if (empty($data['title_err']) && empty($data['body_err'])) {
             // SUCCESS
-            die('FORM SUBMITED');
+            if ($this->postModel->addPosts($data)) {
+               flash('post_msg', 'Post Added');
+               redirect('posts');
+            } else {
+               die('Something went wrong');
+            }
          } else {
+            // Load views with errors
             $this->view('posts/index', $data);
          }
       } else {
-         
          $data = [
             'posts' => $posts,
             'title' => '',
@@ -53,9 +60,9 @@ class Posts extends Controller
          $this->view('posts/index', $data);
       }
 
-         // $data = [
-         //    'posts' => $posts,
-         // ];
-         // $this->view('posts/index', $data);
+      // $data = [
+      //    'posts' => $posts,
+      // ];
+      // $this->view('posts/index', $data);
    }
 }
