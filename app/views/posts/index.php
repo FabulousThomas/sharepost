@@ -11,6 +11,8 @@
    </div>
 </div>
 
+<?php flash('post_msg'); ?>
+
 <?php foreach ($data['posts'] as $post) : ?>
    <div class="card card-body mb-3">
       <h4 class="card-title"><?php echo $post->title; ?></h4>
@@ -47,7 +49,11 @@
                </div>
 
                <div class="modal-footer border-0">
-                  <button type="submit" class="btn btn-success btn-sm">Add Post</button>
+                  <?php if (isset($_SESSION['user_id'])) : ?>
+                     <button type="submit" class="btn btn-success btn-sm">Add Post</button>
+                  <?php else : ?>
+                     <button type="button" class="btn btn-success btn-sm">Add Post</button>
+                  <?php endif; ?>
                   <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
                </div>
             </form>
