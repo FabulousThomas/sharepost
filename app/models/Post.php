@@ -24,17 +24,27 @@ class Post extends Controller
       return $result;
    }
 
-   public function addPosts($data) {
+   public function addPosts($data)
+   {
       $this->db->query('INSERT INTO posts (user_id, title, body) VALUES (:user_id, :title, :body)');
       $this->db->bind(':user_id', $data['user_id']);
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':body', $data['body']);
 
-      if($this->db->execute()) {
+      if ($this->db->execute()) {
          return true;
       } else {
          return false;
       }
+   }
+
+   public function getPostId($id)
+   {
+      $this->db->query('SELECT * FROM posts WHERE id = :id');
+      $this->db->bind(':id', $id);
+
+      $row = $this->db->singleSet();
       
+      return $row;
    }
 }
