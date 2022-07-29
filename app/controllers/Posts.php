@@ -13,14 +13,14 @@ class Posts extends Controller
 
    public function index()
    {
-      $posts = $this->postModel->getPosts();
+      $post = $this->postModel->getPosts();
       // Check for Post Request
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          // die('Post is added');
          // Sanitize post input
          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          $data = [
-            'posts' => $posts,
+            'posts' => $post,
             'title' => trim($_POST['title']),
             'body' => trim($_POST['body']),
             'user_id' => $_SESSION['user_id'],
@@ -51,7 +51,7 @@ class Posts extends Controller
          }
       } else {
          $data = [
-            'posts' => $posts,
+            'posts' => $post,
             'title' => '',
             'body' => '',
             'title_err' => '',
@@ -59,10 +59,14 @@ class Posts extends Controller
          ];
          $this->view('posts/index', $data);
       }
+   }
 
-      // $data = [
-      //    'posts' => $posts,
-      // ];
-      // $this->view('posts/index', $data);
+   public function show($id) {
+      $post = $this->postModel->getPostId($id);
+
+      $data = [
+         'post' => $post,
+      ];
+      $this->view('posts/show', $data);
    }
 }
