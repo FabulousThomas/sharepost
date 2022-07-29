@@ -49,11 +49,7 @@
                </div>
 
                <div class="modal-footer border-0">
-                  <?php if (isset($_SESSION['user_id'])) : ?>
-                     <button type="submit" class="btn btn-success btn-sm">Add Post</button>
-                  <?php else : ?>
-                     <button type="button" class="btn btn-success btn-sm">Add Post</button>
-                  <?php endif; ?>
+                  <button type="submit" class="btn btn-success btn-sm">Add Post</button>
                   <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
                </div>
             </form>
