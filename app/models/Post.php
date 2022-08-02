@@ -6,8 +6,20 @@ class Post extends Controller
    public function __construct()
    {
       $this->db = new Database;
+      $this->createDatabase();
    }
 
+   public function createDatabase() {
+      $this->db->query('CREATE DATABASE IF NOT EXISTS sharepost');
+
+      if($this->db->execute()) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   // Get all posts
    public function getPosts()
    {
       $this->db->query('SELECT *,
@@ -24,6 +36,7 @@ class Post extends Controller
       return $result;
    }
 
+   // Add posts
    public function addPosts($data)
    {
       $this->db->query('INSERT INTO posts (user_id, title, body) VALUES (:user_id, :title, :body)');
