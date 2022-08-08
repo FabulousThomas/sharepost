@@ -16,7 +16,7 @@ class Posts extends Controller
    {
       $post = $this->postModel->getPosts();
       // Check for Post Request
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if ($_SERVER['REQUEST_METHOD'] == 'POSTs') {
          // die('Post is added');
          // Sanitize post input
          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
