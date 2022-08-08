@@ -10,7 +10,7 @@
                <label for="email">Email <sup>*</sup></label>
                <input type="email" name="email" id="email" class="form-control <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" placeholder="" value="<?php echo $data['email']; ?>">
                <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-            </div>
+            </div>   
             <div class="form-group mb-2">
                <label for="password">Password <sup>*</sup></label>
                <input type="password" name="password" id="password" class="form-control <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" placeholder="" value="<?php echo $data['password']; ?>">
