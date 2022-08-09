@@ -9,7 +9,7 @@ class Users extends Controller
    // Register method to load view
    public function register()
    {
-      // Check for Request
+      // Check for Reques
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          // Process form
          // Sanitize POST data
