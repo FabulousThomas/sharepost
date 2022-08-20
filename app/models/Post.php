@@ -9,10 +9,11 @@ class Post extends Controller
       $this->createDatabase();
    }
 
-   public function createDatabase() {
+   public function createDatabase()
+   {
       $this->db->query('CREATE DATABASE IF NOT EXISTS sharepost');
 
-      if($this->db->execute()) {
+      if ($this->db->execute()) {
          return true;
       } else {
          return false;
@@ -62,8 +63,8 @@ class Post extends Controller
       return $row;
    }
 
-     // Update posts
-     public function updatePosts($data)
+   // Update posts
+   public function updatePosts($data)
    {
       $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
       $this->db->bind(':id', $data['id']);
@@ -77,16 +78,16 @@ class Post extends Controller
       }
    }
 
-      // Get Post by ID
-      public function deletePosts($id)
-      {
-         $this->db->query('DELETE FROM posts WHERE id = :id');
-         $this->db->bind(':id', $id);
-   
-         if ($this->db->execute()) {
-            return true;
-         } else {
-            return false;
-         }
+   // Get Post by ID
+   public function deletePosts($id)
+   {
+      $this->db->query('DELETE FROM posts WHERE id = :id');
+      $this->db->bind(':id', $id);
+
+      if ($this->db->execute()) {
+         return true;
+      } else {
+         return false;
       }
+   }
 }
