@@ -140,14 +140,14 @@ class Posts extends Controller
    // Delete Posts
    public function delete($id)
    {
-      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          // Check for owner
          $post = $this->postModel->getPostId($id);
-         if($post->user_id != $_SESSION['user_id']) {
+         if ($post->user_id != $_SESSION['user_id']) {
             redirect('posts');
          }
          $delete = $this->postModel->deletePosts($id);
-         if($delete) {
+         if ($delete) {
             flash('post_msg', 'Post is Successfully Deleted');
             redirect('posts');
          } else {
