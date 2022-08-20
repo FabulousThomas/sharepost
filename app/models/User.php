@@ -1,5 +1,6 @@
-<?php 
-class User {
+<?php
+class User
+{
    private $db;
 
    public function __construct()
@@ -9,7 +10,8 @@ class User {
 
    // Register user
 
-   public function register($data) {
+   public function register($data)
+   {
       $this->db->query('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
       // Bind values
       $this->db->bind(':name', $data['name']);
@@ -17,7 +19,7 @@ class User {
       $this->db->bind(':password', $data['password']);
 
       // Execute query
-      if($this->db->execute()) {
+      if ($this->db->execute()) {
          return true;
       } else {
          return false;
@@ -40,13 +42,14 @@ class User {
       }
    }
    // Validate User email
-   public function findUserEmail($email) {
+   public function findUserEmail($email)
+   {
       $this->db->query('SELECT * FROM users WHERE email = :email');
       $this->db->bind(':email', $email);
       $row = $this->db->singleSet();
 
       // Check row for data
-      if($this->db->rowCount() > 0) {
+      if ($this->db->rowCount() > 0) {
          return true;
       } else {
          return false;
@@ -59,7 +62,7 @@ class User {
       $this->db->bind(':id', $id);
 
       $row = $this->db->singleSet();
-      
+
       return $row;
    }
 }
