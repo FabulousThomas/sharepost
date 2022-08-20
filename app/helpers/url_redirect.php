@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 // Url redirect
-function redirect($pages) {
+function redirect($pages)
+{
    header('Location: ' . URLROOT . '/' . $pages);
 }
